@@ -1,5 +1,5 @@
 // Create an entry in apps.json as follows:
-{ "id": "ddock",
+{ "id": "desk_dock",
   "name": "Desk Dock",
   "shortName":"Desk",
   "icon": "app.png",
@@ -7,8 +7,8 @@
   "description": "When charging shows the time in 90 degree flip (more to come)",
   "readme": "README.md",
   "storage": [
-    {"name":"deskdock.app.js","url":"app.js"},
-    {"name":"deskdock.boot.js","url":"boot.js"},
-    {"name":"deskdock.img","url":"app-icon.js","evaluate":true}
+    {"name":"desk_dock.app.js","url":"app.js"},
+    {"name":"desk_dock.boot.js","url":"boot.js"},
+    {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
   ]
 }
