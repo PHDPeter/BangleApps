@@ -2522,7 +2522,7 @@
     {"name":"hardalarm.json"}
   ]
 },
-{ "id": "ddock",
+{ "id": "desk_dock",
   "name": "Desk Dock",
   "shortName":"Desk",
   "icon": "app.png",
