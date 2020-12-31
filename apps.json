@@ -2521,8 +2521,7 @@
   "data": [
     {"name":"hardalarm.json"}
   ]
-}
-]
+},
 { "id": "d_dock",
   "name": "Desk Dock",
   "shortName":"Desk",
@@ -2536,3 +2535,4 @@
     {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
   ]
 }
+]
