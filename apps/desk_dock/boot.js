@@ -1,1 +1,1 @@
-Bangle.on("charging", isCharging => { if (isCharging) load("desk_dock.app.js"); });
+Bangle.on("charging", isCharging => { if (isCharging) load("deskdock.app.js"); });
