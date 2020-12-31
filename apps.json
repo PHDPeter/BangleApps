@@ -2523,3 +2523,16 @@
   ]
 }
 ]
+{ "id": "d_dock",
+  "name": "Desk Dock",
+  "shortName":"Desk",
+  "icon": "app.png",
+  "version":"0.01",
+  "description": "When charging shows the time in 90 degree flip (more to come)",
+  "readme": "README.md",
+  "storage": [
+    {"name":"desk_dock.app.js","url":"app.js"},
+    {"name":"desk_dock.boot.js","url":"boot.js"},
+    {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
+  ]
+}
