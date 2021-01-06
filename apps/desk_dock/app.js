@@ -1,9 +1,5 @@
-var deviceInfo = {};
 if (Bangle.getAccel().x < -0.7)
     g.setRotation(3); // assume watch in charge cradle
-
-g.clear();
-
 
 // Load fonts
 require("Font7x11Numeric7Seg").add(Graphics);
@@ -28,13 +24,31 @@ function drawClock() {
   g.setFont("6x8",size/2.5);
   g.drawString(s,g.getWidth()/2, y + size*12.5, true);
   // keep screen on
-  g.flip();
+  if (d.getHours()<0);
+    g.flip();
 }
-
-setInterval(drawClock, 1000);
+// Clear the screen once, at startup
+g.clear();
+// draw immediately at first
 drawClock();
+var secondInterval = setInterval(drawClock, 1000);
+// Stop updates when LCD is off, restart when on
+Bangle.on('lcdPower',on=>{
+  if (secondInterval) clearInterval(secondInterval);
+  secondInterval = undefined;
+  if (on) {
+    secondInterval = setInterval(draw, 1000);
+    draw(); // draw immediately
+  }
+});
 
 
+// Load widgets
+Bangle.loadWidgets();
+WIDGETS.forEach(w=>w.area="tl");
+Bangle.drawWidgets();
+
+// start up with charging
 if (Bangle.isCharging()) {
   Bangle.on("charging", isCharging => {
     if (!isCharging) load();
