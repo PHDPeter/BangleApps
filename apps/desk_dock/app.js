@@ -1,8 +1,11 @@
 if (Bangle.getAccel().x < -0.7)
     g.setRotation(3); // assume watch in charge cradle
 
+
 // Load fonts
 require("Font7x11Numeric7Seg").add(Graphics);
+// Load Color
+var color_clock= 0x7800;//0xF800;
 
 function drawClock() {
   var d = new Date();
@@ -11,6 +14,7 @@ function drawClock() {
       y = size;
   g.reset();
   g.setFont("7x11Numeric7Seg",size).setFontAlign(1,-1);
+  g.setColor(color_clock);
   g.drawString(d.getHours(), x, y, true);
   g.setFontAlign(-1,-1);
   if (d.getSeconds()&1) g.drawString(":", x,y);
@@ -22,6 +26,7 @@ function drawClock() {
   var s = d.toString().split(" ").slice(0,4).join(" ");
   g.reset().setFontAlign(0,-1);
   g.setFont("6x8",size/2.5);
+  g.setColor(color_clock);
   g.drawString(s,g.getWidth()/2, y + size*12.5, true);
   // keep screen on
   if (d.getHours()<0);
@@ -43,14 +48,14 @@ Bangle.on('lcdPower',on=>{
 });
 
 
-// Load widgets
-Bangle.loadWidgets();
-WIDGETS.forEach(w=>w.area="tl");
-Bangle.drawWidgets();
-
 // start up with charging
 if (Bangle.isCharging()) {
   Bangle.on("charging", isCharging => {
     if (!isCharging) load();
   });
 }
+
+// Load widgets
+Bangle.loadWidgets();
+WIDGETS.forEach(w=>w.area="tl");
+Bangle.drawWidgets();
