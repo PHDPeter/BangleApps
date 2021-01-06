@@ -1,19 +1,16 @@
 var deviceInfo = {};
 if (Bangle.getAccel().x < -0.7)
     g.setRotation(3); // assume watch in charge cradle
-// Tile sizes
-var TILESIZE = 60;
-// Tiles along width of screen
-var TILEX = 4;
 
 g.clear();
+
 
 // Load fonts
 require("Font7x11Numeric7Seg").add(Graphics);
 
 function drawClock() {
   var d = new Date();
-  var size = 3;
+  var size = 6;
   var x = (g.getWidth()/2) - size*6,
       y = size;
   g.reset();
@@ -28,13 +25,15 @@ function drawClock() {
   // date
   var s = d.toString().split(" ").slice(0,4).join(" ");
   g.reset().setFontAlign(0,-1);
-  g.drawString(s,g.getWidth()/2, y + size*12, true);
+  g.setFont("6x8",size/2.5);
+  g.drawString(s,g.getWidth()/2, y + size*12.5, true);
   // keep screen on
   g.flip();
 }
 
 setInterval(drawClock, 1000);
 drawClock();
+
 
 if (Bangle.isCharging()) {
   Bangle.on("charging", isCharging => {
