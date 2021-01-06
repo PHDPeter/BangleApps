@@ -2529,6 +2529,7 @@
   "version":"0.01",
   "description": "When charging shows the time in 90 degree flip (more to come)",
   "readme": "README.md",
+ "allow_emulator": true,
   "storage": [
     {"name":"desk_dock.app.js","url":"app.js"},
     {"name":"desk_dock.boot.js","url":"boot.js"},
