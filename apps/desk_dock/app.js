@@ -29,7 +29,7 @@ function drawClock() {
   g.setColor(color_clock);
   g.drawString(s,g.getWidth()/2, y + size*12.5, true);
   // keep screen on
-  if (d.getHours()<0);
+  if (d.getHours()<22);
     g.flip();
 }
 // Clear the screen once, at startup
