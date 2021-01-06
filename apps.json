@@ -2536,9 +2536,9 @@
     {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
   ]
 },
-	  { "id": "more_torch",
+{ "id": "more_torch",
     "name": "More Torch",
-    "shortName":"+Torch",
+    "shortName":"More Torch",
     "icon": "app.png",
     "version":"0.01",
     "description": "Turns screen white to help you see in the dark. Select from the launcher or press BTN1,BTN3,BTN1,BTN3 quickly to start when in any app that shows widgets",
