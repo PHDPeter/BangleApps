@@ -1,6 +1,8 @@
 if (Bangle.getAccel().x < -0.7)
     g.setRotation(3); // assume watch in charge cradle
 
+const yOffset = 23;
+
 
 // Load fonts
 require("Font7x11Numeric7Seg").add(Graphics);
@@ -11,7 +13,7 @@ function drawClock() {
   var d = new Date();
   var size = 6;
   var x = (g.getWidth()/2) - size*6,
-      y = size;
+      y = size+yOffset;
   g.reset();
   g.setFont("7x11Numeric7Seg",size).setFontAlign(1,-1);
   g.setColor(color_clock);
