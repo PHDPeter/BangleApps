@@ -2535,5 +2535,5 @@
     {"name":"desk_dock.boot.js","url":"boot.js"},
     {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
   ]
-},
+}
 ]
