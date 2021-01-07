@@ -2549,9 +2549,6 @@
       {"name":"more_torch.settings.js","url":"settings.js"}
       {"name":"more_torch.wid.js","url":"widget.js"},
       {"name":"more_torch.img","url":"app-icon.js","evaluate":true}
-    ],
-    "data": [
-      {"name":"more_torch.json"}
     ]
 },
 ]
