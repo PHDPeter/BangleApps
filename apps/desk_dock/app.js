@@ -59,5 +59,5 @@ if (Bangle.isCharging()) {
 
 // Load widgets
 Bangle.loadWidgets();
-WIDGETS.forEach(w=>w.area="tl");
+for (var w of WIDGETS) w.area="tl";
 Bangle.drawWidgets();
