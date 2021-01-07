@@ -2535,23 +2535,5 @@
     {"name":"desk_dock.boot.js","url":"boot.js"},
     {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
   ]
-},
-{ "id": "more_torch",
-    "name": "More Torch",
-    "shortName":"More Torch",
-    "icon": "app.png",
-    "version":"0.01",
-    "description": "Turns screen white to help you see in the dark. Select from the launcher or press BTN1,BTN3,BTN1,BTN3 quickly to start when in any app that shows widgets",
-    "tags": "tool,torch",
-    "allow_emulator": true,
-    "storage": [
-      {"name":"more_torch.app.js","url":"app.js"},
-      {"name":"more_torch.settings.js","url":"settings.js"}
-      {"name":"more_torch.wid.js","url":"widget.js"},
-      {"name":"more_torch.img","url":"app-icon.js","evaluate":true}
-    ],
-    "data": [
-      {"name":"more_torch.json"}
-    ]
 }
 ]
