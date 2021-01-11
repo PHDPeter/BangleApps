@@ -7,7 +7,8 @@
   //setting the defults
   function getSettings(){
     return {
-      colour: 'red'
+      colour: 'red',
+      brightness: 0.5
     };
   }
   
@@ -35,9 +36,18 @@
       value : 0 | colour_l.indexOf(settings.colour),
       format: v => colour_l[v],
       onchange: v => {
-        settings.HID = colour_l[v];
+        settings.colour = colour_l[v];
         saveChange('colour');
-      }
+      },
+      "Brightness" : {
+        value: settings.brightness,
+        min: 0.1,
+        max: 1,
+        step: 0.1,
+        onchange: v => {
+        settings.brightness = v || 1,
+        saveChange('colour')
+        }
       //min: 1, max: 10, step: 1,
       //onchange : saveChange('colour')
     },
