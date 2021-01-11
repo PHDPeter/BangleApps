@@ -4,7 +4,10 @@ const filename = 'more_torch.json';
 let settings = Storage.readJSON(filename,1) || {
   colour: 'green'
 };
-t_colour=0xFFFF;
+const colour ='defult'
+if (colour=='defult') t_colour=0xFFFF;
+
+function drawTorch(colour){
 if(settings.colour=='red') var t_colour=0xF800;
 if(settings.colour=='blue') var t_colour=0x001F;
 //else t_colour=0xFFFF;
@@ -15,6 +18,21 @@ g.reset();
 g.setColor(t_colour);
 //run the torch
 g.fillRect(0,0,g.getWidth(),g.getHeight());
+}
+
+// Swiping
+Bangle.on("swipe",(dir)=>{
+    selected = 0;
+    oldselected=-1;
+    if (dir<0){
+        ++page; if (page>maxPage) page=maxPage;
+        #drawPage(page);
+    } else {
+        --page; if (page<0) page=0;
+        #drawPage(page);
+    }  
+});
+
 // Any button turns off
 setWatch(()=>load(), BTN1);
 setWatch(()=>load(), BTN2);
