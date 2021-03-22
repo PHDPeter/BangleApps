@@ -3,7 +3,7 @@
   "name": "Desk Dock",
   "shortName":"Desk",
   "icon": "app.png",
-  "version":"0.01",
+  "version":"0.02",
   "description": "When charging shows the time in 90 degree flip (more to come)",
   "readme": "README.md",
   "storage": [
