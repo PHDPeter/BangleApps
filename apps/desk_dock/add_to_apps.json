@@ -9,7 +9,6 @@
   "storage": [
     {"name":"desk_dock.app.js","url":"app.js"},
     {"name":"desk_dock.boot.js","url":"boot.js"},
-    {"name":"desk_dock.suncalc.js","url":"suncalc.js"}
     {"name":"desk_dock.img","url":"app-icon.js","evaluate":true}
   ]
 }
