@@ -4,7 +4,7 @@ if (Bangle.getAccel().x < -0.7)
 const yOffset = 23;
 const width = g.getWidth();
 const height = g.getHeight();
-const SunCalc = require("suncalc.js");
+//const SunCalc = require("suncalc.js");
 
 
 // Load fonts
