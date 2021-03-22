@@ -45,7 +45,7 @@ Bangle.on('lcdPower',on=>{
   secondInterval = undefined;
   if (on) {
     secondInterval = setInterval(draw, 1000);
-    draw(); // draw immediately
+    drawClock(); // draw immediately
   }
 });
 
