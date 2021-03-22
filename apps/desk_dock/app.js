@@ -2,12 +2,31 @@ if (Bangle.getAccel().x < -0.7)
     g.setRotation(3); // assume watch in charge cradle
 
 const yOffset = 23;
+const width = g.getWidth();
+const height = g.getHeight();
+const SunCalc = require("suncalc.js");
 
 
 // Load fonts
 require("Font7x11Numeric7Seg").add(Graphics);
 // Load Color
 var color_clock= 0x7800;//0xF800;
+
+function levelColor(l) {
+  // no icon -> brightest green to indicate charging, even when showing percentage
+  if (Bangle.isCharging()) return Arwes.C.color.success.base;
+  if (l >= 50) return Arwes.C.color.success.base;
+  if (l >= 15) return Arwes.C.color.secondary.dark;
+  return Arwes.C.color.alert.base;
+}
+
+function drawSunBar() {
+  const l = 50;//E.getBattery(), c = levelColor(l);
+  // count = l;
+  const xl = 45 + l * (194 - 46) / 100;
+  g.clearRect(46, 58 + 80 + yOffset + 37, 193, height - 5);
+  g.setColor(color_clock).fillRect(46, 58 + 80 + yOffset + 37, xl, height - 5);
+}
 
 function drawClock() {
   var d = new Date();
@@ -33,7 +52,11 @@ function drawClock() {
   // keep screen on
   //if (d.getHours()<22);
   //  g.flip();
+  drawSunBar();
 }
+
+
+
 // Clear the screen once, at startup
 g.clear();
 // draw immediately at first
@@ -61,3 +84,4 @@ if (Bangle.isCharging()) {
 Bangle.loadWidgets();
 for (var w of WIDGETS) w.area="tl";
 Bangle.drawWidgets();
+
