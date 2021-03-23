@@ -4,7 +4,20 @@ if (Bangle.getAccel().x < -0.7)
 const yOffset = 23;
 const width = g.getWidth();
 const height = g.getHeight();
+const centerX = g.getWidth() / 2;
+const centerY = (g.getWidth()/1.2);
 //const SunCalc = require("suncalc.js");
+let alarms = require("Storage").readJSON("alarm.json",1)||{  hr: 'None'};
+const hr = alarms.hr;
+/*alarms = [
+  { on : true,
+    hr : 6.5, // hours + minutes/60
+    msg : "Eat chocolate",
+    last : 0, // last day of the month we alarmed on - so we don't alarm twice in one day!
+    rp : true, // repeat
+    as : false, // auto snooze
+  }
+];*/
 
 
 // Load fonts
@@ -20,12 +33,55 @@ function levelColor(l) {
   return Arwes.C.color.alert.base;
 }
 
-function drawSunBar() {
-  const l = 50;//E.getBattery(), c = levelColor(l);
+function drawAlarmBar() {
+  const l = 10;//E.getBattery(), c = levelColor(l);
   // count = l;
   const xl = 45 + l * (194 - 46) / 100;
-  g.clearRect(46, 58 + 80 + yOffset + 37, 193, height - 5);
-  g.setColor(color_clock).fillRect(46, 58 + 80 + yOffset + 37, xl, height - 5);
+  g.clearRect(46, 58 + 80 + yOffset + 37+10, 193, height - 15);
+  g.setColor(color_clock).fillRect(46, 58 + 80 + yOffset + 37+10, xl, height - 15);
+  if (hr!='None') {
+    g.drawString(hr,centerX, centerY-25 , true);//test to see if alarems are loaded
+    } else {
+      g.drawString("sleep well",centerX, centerY-25 , true);//alarm.hr
+    }
+}
+
+
+const seconds = (angle) => {
+  g.setColor(0, 0, 0.6);
+  const pRad = Math.PI / 180;
+  const faceWidth =100;
+  const centerX = g.getWidth() / 2;
+  const centerY = (g.getWidth()/1.01);
+  const a = angle * pRad;
+  const x = centerX + Math.sin(a) * faceWidth;
+  const y = centerY - Math.cos(a) * faceWidth;
+
+  // if 15 degrees, make hour marker larger
+  const radius = (angle % 15) ? 2 : 4;
+  g.fillCircle(x, y, radius);
+};
+
+function drawSun() {  
+  const l = 1;//E.getBattery(), c = levelColor(l);
+  // count = l;
+  const xl = 45 + l * (194 - 46) / 100;
+  const faceWidth =100;
+  //const x = centerX + Math.sin(xl) * faceWidth;
+  const y = centerY - Math.cos(l) * faceWidth;
+  //g.clearRect(46, 8 + 80 + yOffset + 37, 193, height - 5);
+  //const xs=Math.pow(xl,2);
+  //const h =10;
+  //const xs=Math.pow(xl-h,2);
+  //const A=50.0; //guess
+  //const k= 10;
+  //const ys=  (A*xs) + k;//(-A*xs) + 25.0 ;
+  //g.drawString("0", l, y , true);
+  //g.drawString("test",150, 50 , true);
+  //g.setColor(color_clock).fillRect(ys, 58 + 80 + yOffset + 37, xl, height - 5);
+  for (let i = 0; i < 60; i++) {
+        seconds((180 * i) / 30);
+  }
 }
 
 function drawClock() {
@@ -52,7 +108,8 @@ function drawClock() {
   // keep screen on
   //if (d.getHours()<22);
   //  g.flip();
-  drawSunBar();
+  drawSun();
+  drawAlarmBar();
 }
 
 
