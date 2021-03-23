@@ -82,6 +82,6 @@ if (Bangle.isCharging()) {
 
 // Load widgets
 Bangle.loadWidgets();
-for (var w of WIDGETS) w.area="tr";#still not using the whole bar but "tr" seems to fit better then "tl"
+for (var w of WIDGETS) w.area="t";//still not using the whole bar but "tr" seems to fit better then "tl"
 Bangle.drawWidgets();
 
