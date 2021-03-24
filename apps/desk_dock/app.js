@@ -82,6 +82,12 @@ function drawSun() {
   for (let i = 0; i < 60; i++) {
         seconds((180 * i) / 30);
   }
+  //time till nightfall (- if alredy night)
+  g.setColor(0xC618);
+  g.drawString("-00", 30, 135 , true);
+  //time till sunrise (- if alredy up)
+  g.setColor(0xFD20);
+  g.drawString("-00", 218, 135 , true);
 }
 
 function drawClock() {
