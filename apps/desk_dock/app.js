@@ -47,18 +47,18 @@ function drawAlarmBar() {
 }
 
 
-const seconds = (angle) => {
-  g.setColor(0, 0, 0.6);
+const seconds = (angle,radius) => {
+  //g.setColor(0, 0, 0.6);
   const pRad = Math.PI / 180;
   const faceWidth =100;
   const centerX = g.getWidth() / 2;
-  const centerY = (g.getWidth()/1.01);
+  const centerY = (g.getWidth()/1.01);//1.01
   const a = angle * pRad;
   const x = centerX + Math.sin(a) * faceWidth;
   const y = centerY - Math.cos(a) * faceWidth;
 
   // if 15 degrees, make hour marker larger
-  const radius = (angle % 15) ? 2 : 4;
+  //const radius = (angle % 15) ? 2 : 4;
   g.fillCircle(x, y, radius);
 };
 
@@ -69,6 +69,7 @@ function drawSun() {
   const faceWidth =100;
   //const x = centerX + Math.sin(xl) * faceWidth;
   const y = centerY - Math.cos(l) * faceWidth;
+  const radius= 2;
   //g.clearRect(46, 8 + 80 + yOffset + 37, 193, height - 5);
   //const xs=Math.pow(xl,2);
   //const h =10;
@@ -79,8 +80,12 @@ function drawSun() {
   //g.drawString("0", l, y , true);
   //g.drawString("test",150, 50 , true);
   //g.setColor(color_clock).fillRect(ys, 58 + 80 + yOffset + 37, xl, height - 5);
-  for (let i = 0; i < 60; i++) {
-        seconds((180 * i) / 30);
+  for (let i = 0; i < 30; i++) {
+        if (i==10){g.setColor(0xC618);
+                  const radius = 4;}
+    else{g.setColor(0, 0, 0.6);
+        const radius = 2;}
+        seconds((180 * i) / 30 -90,radius);// -90 make it start at the left hand side,180 to only do 1/2 circal
   }
   //time till nightfall (- if alredy night)
   g.setColor(0xC618);
